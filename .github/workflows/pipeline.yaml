@@ -116,6 +116,12 @@ jobs:
         with:
           use-installer: true
 
+      - name: Install cargo lambda
+        run: |
+          cargo install cargo-lambda
+          which cargo
+          which cargo-lambda
+
       - name: Build resources
         run: PATH=$PATH:~/.cargo/bin sam build --template ${SAM_TEMPLATE} --beta-features
 
