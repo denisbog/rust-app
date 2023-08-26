@@ -117,7 +117,7 @@ jobs:
           use-installer: true
 
       - name: Build resources
-        run: PATH=$PATH:.cargo/bin sam build --template ${SAM_TEMPLATE} --beta-features
+        run: PATH=$PATH:~/.cargo/bin sam build --template ${SAM_TEMPLATE} --beta-features
 
       - name: Assume the testing pipeline user role
         uses: aws-actions/configure-aws-credentials@v1-node16
