@@ -116,14 +116,8 @@ jobs:
         with:
           use-installer: true
 
-      - name: Install cargo lambda
-        run: |
-          cargo install cargo-lambda
-          which cargo
-          which cargo-lambda
-
       - name: Build resources
-        run: PATH=$PATH:~/.cargo/bin sam build --template ${SAM_TEMPLATE} --beta-features
+        run: PATH=$PATH:~/.cargo/bin sam build --template ${SAM_TEMPLATE} --use-container --build-image denisbog/aws-sam-cli-build-image-rust:latest --beta-features
 
       - name: Assume the testing pipeline user role
         uses: aws-actions/configure-aws-credentials@v1-node16
