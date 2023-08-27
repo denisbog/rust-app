@@ -6,8 +6,7 @@ use serde::{Deserialize, Serialize};
 /// strings in json format, which can map to any structure that implements `serde::Deserialize`
 /// The runtime pays no attention to the contents of the request payload.
 #[derive(Deserialize)]
-struct Request {
-}
+struct Request {}
 
 /// This is a made-up example of what a response structure may look like.
 /// There is no restriction on what it can be. The runtime requires responses
@@ -28,7 +27,7 @@ async fn function_handler(event: LambdaEvent<Request>) -> Result<Response, Error
     // Prepare the response
     let resp = Response {
         statusCode: 200,
-        body: "Hello World!".to_string(),
+        body: "Hello Moldova".to_string(),
     };
 
     // Return `Response` (it will be serialized to JSON automatically by the runtime)
@@ -47,3 +46,4 @@ async fn main() -> Result<(), Error> {
 
     run(service_fn(function_handler)).await
 }
+
